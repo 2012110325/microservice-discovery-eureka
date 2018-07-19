@@ -1,0 +1,16 @@
+server:
+  port: 8761
+eureka:
+  client:
+    healthcheck:
+      enabled: true
+    registerWithEureka: false # 表示是否将自己主持到 Eureka server，默认为true。 由于当前应用是Eureka Server 故为false
+    fetchRegistry: false  # 是否从Eureka Server获取注册信息，默认是true，当前eureka server不需要从其他 server节点获取数据 故false
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/ # 设置与Eureka server交互的地址，查询服务和注册服务都需要依赖这个地址，多个地址可用,分隔
+security:
+  basic:
+    enabled: true #开启基于 HTTP basic的认证
+  user:
+    name: user
+    password: passwd123   # 若不配置这段， 这账号默认是 user，密码是随机值，在启动时会打印出来。 Using default security password: 9d5a57a6-ecbf-4d07-814e-fc67e5832325
